@@ -55,7 +55,7 @@ At all other times, the extension delegates typing events to the VS Code default
 
 1. Open **Visual Studio Code**.
 2. Navigate to **View → Extensions**.
-3. Search for **KPI Polyana Compliance** (or install via a provided `.vsix`).
+3. Search for **KPI Polyana Observer**.
 4. Reload the editor if prompted.
 5. No further setup is necessary.
 

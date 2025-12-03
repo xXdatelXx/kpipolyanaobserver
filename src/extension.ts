@@ -1,13 +1,13 @@
 import { commands, window } from 'vscode';
 
-function isFridayNight(): boolean {
-	const now = new Date();
-	return now.getDay() === 5 && now.getHours() >= 18;
-}
-
 export function activate() {
+	const date = new Date();
+
+	if (date.getDate() != 5)
+		return;
+
 	commands.registerCommand('type', async (args) => {
-		if (isFridayNight()) {
+		if (date.getHours() >= 18) {
 			window.showWarningMessage("Writing code is disabled until Polyana time!");
 			return;
 		}
