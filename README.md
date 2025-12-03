@@ -1,71 +1,80 @@
-# kpipolyanaobserver README
+# KPI Polyana Compliance Extension
 
-This is the README for your extension "kpipolyanaobserver". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+This Visual Studio Code extension enforces a strict **Friday evening productivity policy** aligned with the long-standing cultural practice known as **“KPI Polyana.”**
+Its purpose is to ensure that developers do not engage in coding activities during designated social hours.
 
 ---
 
-## Following extension guidelines
+## Overview
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+The extension intercepts all typing actions within the editor.
+If the user attempts to write code **on Friday after 18:00 local time**, the action is blocked and a warning message is displayed.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+This mechanism promotes a healthier work–life balance and prevents unauthorized overtime during community-designated hours.
 
-## Working with Markdown
+---
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+## Features
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+* **Real-time restriction of text input** on Friday evenings.
+* **Non-intrusive operation** outside of restricted hours.
+* **Automatic enforcement** without any configuration required.
+* **Clear user notification** when a typing attempt is prevented.
 
-## For more information
+---
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+## Rationale
 
-**Enjoy!**
+KPI Polyana represents a traditional, time-bound community event that is widely observed among Kyiv Polytechnic Institute students and alumni.
+In accordance with this practice, professional or academic work during Polyana hours is discouraged.
+
+This extension formalizes that rule within the development environment, preventing accidental or deliberate violation.
+
+---
+
+## Behavior Specification
+
+The restriction is activated when both of the following conditions are met:
+
+1. **Day:** `Friday` (`getDay() === 5`)
+2. **Time:** `18:00` or later (`getHours() >= 18`)
+
+When these conditions are satisfied:
+
+* The `type` command is intercepted.
+* The user’s input is not forwarded to the default text handler.
+* A warning message is shown:
+
+  > “Writing code is disabled until Polyana time!”
+
+At all other times, the extension delegates typing events to the VS Code default behavior.
+
+---
+
+## Installation
+
+1. Open **Visual Studio Code**.
+2. Navigate to **View → Extensions**.
+3. Search for **KPI Polyana Compliance** (or install via a provided `.vsix`).
+4. Reload the editor if prompted.
+5. No further setup is necessary.
+
+---
+
+## Intended Audience
+
+* Software engineers working within the KPI ecosystem
+* Teams adhering to Polyana-based social schedules
+* Individuals seeking automated enforcement of downtime policies
+
+---
+
+## License
+
+This project may be used, modified, or extended in accordance with its associated license file.
+
+---
+
+## Acknowledgements
+
+This extension is inspired by long-standing community traditions and aims to uphold them in a formalized, predictable manner.
