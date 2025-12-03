@@ -15,11 +15,7 @@ out/
 dist/
 .vscode-test/
 
-# VS Code internals
 .vscode/*
-!.vscode/settings.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # TypeScript build artifacts
 *.js
@@ -33,3 +29,4 @@ Thumbs.db
 # Package management
 .yarn/
 .pnp.*
+
